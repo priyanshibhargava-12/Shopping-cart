@@ -2,37 +2,29 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import Product from "./product.jsx";
 import { CartContext } from "./Cart.jsx";
-// import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const ContextCart = () => {
   const { itemsList, removeFromCart, calculateTotal } = useContext(CartContext);
-
   const [searchTerm, setSearchTerm] = React.useState("");
   const filteredItems = itemsList.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
   return (
     <>
       <header>
         <h1>Shopping Cart</h1>
-        <div className="Search">
-          <input
-            type="text"
-            placeholder="Search Your Product"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          {/* <SearchIcon className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search Your Product"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          /> */}
-        </div>
+        <Link to="/" className="home-btn">
+          Home
+        </Link>
       </header>
       <section>
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          placeholder="Search Your Product"
+        />
         <div className="cart-item-container">
           {filteredItems.length > 0 ? (
             filteredItems.map((currItem) => (
@@ -53,5 +45,4 @@ const ContextCart = () => {
     </>
   );
 };
-
 export default ContextCart;
