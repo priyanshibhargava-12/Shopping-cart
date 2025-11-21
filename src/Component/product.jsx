@@ -31,12 +31,7 @@ const Product = ({ id, name, price, quantity, image, onRemove }) => {
         </div>
 
         <div className="remove-item">
-        
-          <DeleteIcon
-            onClick={onRemove}
-            className="delete-icon"
-            />
-          
+          <DeleteIcon onClick={onRemove} className="delete-icon" />
         </div>
       </div>
     </div>
